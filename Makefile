@@ -154,6 +154,8 @@ $(DOCKER_TARGETS): docker-%: .build-image
 	$(DOCKER) run \
 		--rm \
 		-e HOME=$(PWD) \
+		-e GO111MODULE=on \
+		-e GOPROXY='https://goproxy.cn,direct' \
 		-e GOCACHE=$(PWD)/.cache/go \
 		-e GOPATH=$(PWD)/.cache/gopath \
 		-v $(PWD):$(PWD) \
